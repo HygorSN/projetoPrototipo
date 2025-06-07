@@ -1,194 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".DoadorDashboard">
+    android:padding="16dp">
 
-    <!-- Campo de busca -->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- Botões favoritos e histórico -->
     <LinearLayout
-        android:id="@+id/btnContainer"
-        android:layout_width="0dp"
+        android:id="@+id/animContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/searchView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
+        <!-- Campo de busca -->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Botão histórico -->
         <Button
             android:id="@+id/btnHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="History" />
-    </LinearLayout>
+            android:text="Histórico"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#000000"
+            android:layout_marginBottom="16dp" />
 
-    <!-- Imagem com texto sugerido -->
-    <ImageView
-        android:id="@+id/imgSuggestion"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="20dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/banner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnContainer" />
-
-    <TextView
-        android:id="@+id/txtFiliais"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="Lista de Ongs Filiais de Doação"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgSuggestion" />
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollFiliais"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@id/txtFiliais"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <!-- Imagem com sugestão (com CardView clicável) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardSuggestion"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:cardUseCompatPadding="true">
 
-            <!-- Exemplo de filial -->
+            <ImageView
+                android:id="@+id/imgSuggestion"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/banner"
+                android:clickable="true"
+                android:focusable="true" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Abinha oculta com sugestões -->
+        <LinearLayout
+            android:id="@+id/boxSugestoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="#F5F5F5"
+            android:padding="12dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="2dp"
+            android:backgroundTint="#FAFAFA">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Melhores alimentos para doar:"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Arroz\n• Feijão\n• Óleo\n• Leite em pó\n• Açúcar\n• Farinha\n• Macarrão"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+
+        <!-- Título filiais -->
+        <TextView
+            android:id="@+id/txtFiliais3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Filiais disponíveis:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Scroll horizontal com filiais -->
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollFiliais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginBottom="24dp">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/circle_background"
-                    android:clipToOutline="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/teste" />
+                <!-- Exemplo de filial -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:background="@drawable/circle_background"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/teste" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Filial 1"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:paddingTop="4dp" />
+                </LinearLayout>
+
+                <!-- Adicione mais filiais aqui -->
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Título das opções de doação -->
+        <TextView
+            android:id="@+id/txtFiliais2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Escolha uma opção para doar:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Card: Doar Cesta Básica -->
+        <LinearLayout
+            android:id="@+id/doacaoCesta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/card_background"
+            android:gravity="center_vertical"
+            android:elevation="6dp"
+            android:clipToOutline="true">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cesta"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/card_background"
+                android:clipToOutline="true" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Filial 1" />
+                    android:text="Doar Cesta Básica Sugerida"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnAdicionarCesta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Adicionar"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginTop="6dp" />
             </LinearLayout>
-
-            <!-- Adicione mais filiais aqui conforme necessário -->
-
         </LinearLayout>
-    </HorizontalScrollView>
 
-    <!-- Seção de produtos (Doar frutas, cesta básica, etc) -->
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/horizontalScrollFiliais"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:layout_constraintVertical_bias="0.3">
-
-        <ImageView
-            android:layout_width="151dp"
-            android:layout_height="101dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/cesta" />
-
-        <TextView
+        <!-- Card: Monte sua Doação -->
+        <LinearLayout
+            android:id="@+id/doacaoMonte"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:gravity="center"
-            android:paddingTop="4dp"
-            android:text="Doar uma cesta básica"
-            android:textSize="14sp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/card_background"
+            android:gravity="center_vertical"
+            android:elevation="6dp"
+            android:clipToOutline="true">
 
-        <Button
-            android:id="@+id/btnAdicionarCesta"
-            android:layout_width="102dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="4dp"
-            android:backgroundTint="#000000"
-            android:elevation="2dp"
-            android:text="Adicionar"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/opcao"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/card_background"
+                android:clipToOutline="true" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monte sua Doação"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnAdicionarMonte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Adicionar"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#000000"
+                    android:textSize="12sp"
+                    android:layout_marginTop="6dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Espaço para fragmentos ou conteúdo adicional -->
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/horizontalScrollFiliais"
-        app:layout_constraintStart_toEndOf="@id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:layout_constraintVertical_bias="0.3">
-
-        <ImageView
-            android:layout_width="152dp"
-            android:layout_height="109dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/opcao" />
-
-        <TextView
-            android:layout_width="179dp"
-            android:layout_height="36dp"
-            android:gravity="center"
-            android:paddingTop="4dp"
-            android:text="Monte sua doação"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btnAdicionarMonte"
-            android:layout_width="110dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="4dp"
-            android:backgroundTint="#000000"
-            android:elevation="2dp"
-            android:text="Adicionar"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/horizontalScrollFiliais"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

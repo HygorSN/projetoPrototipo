@@ -4,4 +4,8 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+    <style name="BottomNav_IconGrande" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconSize">32dp</item> <!-- Você pode ajustar para 36dp ou mais -->
+    </style>
+
 </resources>

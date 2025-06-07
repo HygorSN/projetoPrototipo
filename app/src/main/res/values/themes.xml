@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.ProjetoDoacao" parent="Base.Theme.ProjetoDoacao" />
+    <style name="BottomNav_IconGrande" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconSize">32dp</item> <!-- Você pode ajustar para 36dp ou mais -->
+    </style>
+
 </resources>

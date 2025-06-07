@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
 
     <!-- Formulário de cadastro -->
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="214dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Lista de Alimentos para a Doação"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/etNomeAlimento"
         android:layout_width="match_parent"
@@ -20,25 +41,37 @@
         android:hint="Quantidade"
         android:inputType="number" />
 
+    <!-- Lista de alimentos -->
+
+    <!-- Botão de finalizar -->
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/btnAdicionarItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar" />
+        android:backgroundTint="#000000"
+        android:text="Adicionar"
+        android:textColor="#FFFFFF" />
 
-    <!-- Lista de alimentos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCarrinho"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="16dp" />
+        android:layout_width="384dp"
+        android:layout_height="214dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1" />
 
-    <!-- Botão de finalizar -->
     <Button
         android:id="@+id/btnFinalizarDoacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Finalizar Doação"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#000000"
+        android:text="Contiuar..."
+        android:textColor="#FFFFFF" />
+
 </LinearLayout>
