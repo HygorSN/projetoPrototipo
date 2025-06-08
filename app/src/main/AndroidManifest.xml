@@ -30,6 +30,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".EscolhaOngActivity" />
+        <activity
+            android:name=".CadastroFamiliasActivity"
+            android:theme="@style/Theme.CadastroFamiliasDialog"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".EstoqueActivity"
+            android:theme="@style/Theme.App.TransparentRounded" />
+
+
 
     </application>
 </manifest>

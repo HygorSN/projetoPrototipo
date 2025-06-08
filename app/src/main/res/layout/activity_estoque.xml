@@ -1,55 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#FFFFFF">
-
-    <EditText
-        android:id="@+id/editBuscar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Buscar alimento..."
-        android:drawableLeft="@android:drawable/ic_menu_search"
-        android:padding="10dp"
-        android:background="@android:drawable/edit_text"
-        android:layout_marginBottom="10dp"/>
+    android:background="#80000000"
+    android:fillViewport="true"
+    android:padding="24dp">
 
     <LinearLayout
+        android:id="@+id/containerEstoque"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="10dp">
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:elevation="8dp"
+        android:padding="24dp">
 
-        <Button
-            android:id="@+id/btnAlimentos"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="Alimentos"
-            android:layout_marginEnd="5dp"/>
+        <TextView
+            android:text="Estoque"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#222222"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
 
-        <Button
-            android:id="@+id/btnCestas"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="Cestas Básicas"
-            android:layout_marginStart="5dp"/>
+        <!-- RecyclerView clean para exibir o estoque -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerEstoque"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/listaEstoque"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:dividerHeight="10dp" />
-
-    <Button
-        android:id="@+id/btnAdicionar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adicionar Item"
-        android:layout_marginTop="10dp"/>
-</LinearLayout>
+</ScrollView>

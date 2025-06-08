@@ -1,27 +1,57 @@
 package com.example.projetodoacao;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OngDashboard extends AppCompatActivity {
 
-    LinearLayout btnFamilias, btnEstoques, btnDoacao;
+    private BottomNavigationView bottomNavigationOng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ong_dashboard);
 
-        btnFamilias = findViewById(R.id.btnFamilias);
-        btnEstoques = findViewById(R.id.btnEstoques);
-        btnDoacao = findViewById(R.id.btnDoacao);
+        bottomNavigationOng = findViewById(R.id.bottom_navigation_ong);
 
-        btnFamilias.setOnClickListener(v -> startActivity(new Intent(this, Familias.class)));
-        btnEstoques.setOnClickListener(v -> startActivity(new Intent(this, Estoque.class)));
-        btnDoacao.setOnClickListener(v -> startActivity(new Intent(this, OngDoacao.class)));
+        // Fragmento inicial
+        loadFragment(new HomeOngFragment());
+
+        bottomNavigationOng.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment = null;
+
+                int itemId = item.getItemId();
+                if (itemId == R.id.nav_painel_ong) {
+                    fragment = new HomeOngFragment();
+                } else if (itemId == R.id.nav_doacoes_recebidas) {
+                    fragment = new DoacoesRecebidasFragment();
+                } else if (itemId == R.id.nav_doacoes_notificacao) {
+                    fragment = new NotificacaoOngFragment();
+                } else if (itemId == R.id.nav_perfil_ong) {
+                    fragment = new PerfilOngFragment();
+                }
+
+                if (fragment != null) {
+                    loadFragment(fragment);
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    private void loadFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container_ong, fragment)
+                .commit();
     }
 }
-

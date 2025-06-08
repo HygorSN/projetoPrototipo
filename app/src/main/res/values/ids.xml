@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="nav_painel_ong" type="id" />
+    <item name="editNomeResponsavel" type="id" />
+    <item name="editCpfResponsavel" type="id" />
+    <item name="editRendaMedia" type="id" />
+    <item name="editBairro" type="id" />
+    <item name="editRua" type="id" />
+    <item name="editCidade" type="id" />
+    <item name="editEstado" type="id" />
+    <item name="checkSemLarFixo" type="id" />
+</resources>
