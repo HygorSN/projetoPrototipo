@@ -133,7 +133,7 @@
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cesta"
+                android:src="@drawable/cadastrar"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/card_background"
                 android:clipToOutline="true" />
@@ -178,7 +178,7 @@
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cesta"
+                android:src="@drawable/estoque"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/card_background"
                 android:clipToOutline="true" />
@@ -223,7 +223,7 @@
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cesta"
+                android:src="@drawable/verificar"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/card_background"
                 android:clipToOutline="true" />

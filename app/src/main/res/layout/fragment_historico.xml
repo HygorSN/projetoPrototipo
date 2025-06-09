@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/historicoRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/txtTituloHistorico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Histórico de Doações"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/txtNenhumHistorico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nenhuma doação feita ainda."
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:textColor="#666666" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHistorico"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>

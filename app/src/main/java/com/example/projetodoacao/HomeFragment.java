@@ -2,6 +2,8 @@ package com.example.projetodoacao;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 
 import java.util.ArrayList;
 
@@ -35,6 +35,7 @@ public class HomeFragment extends Fragment {
         boxSugestoes = view.findViewById(R.id.boxSugestoes);
         ViewGroup animContainer = view.findViewById(R.id.animContainer);
 
+        // Animação para expandir/ocultar sugestões ao clicar na imagem
         imgSuggestion.setOnClickListener(v -> {
             if (boxSugestoes.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(animContainer, new AutoTransition());
@@ -45,7 +46,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        // Botão adicionar cesta básica sugerida
+        // Botão "Adicionar Cesta Básica Sugerida"
         Button btnAdicionarCesta = view.findViewById(R.id.btnAdicionarCesta);
         btnAdicionarCesta.setOnClickListener(v -> {
             ArrayList<Alimento> cestaBasica = new ArrayList<>();
@@ -66,7 +67,7 @@ public class HomeFragment extends Fragment {
                     .commit();
         });
 
-        // Botão adicionar Monte sua Doação (abre fragmento vazio)
+        // Botão "Adicionar Monte sua Doação"
         Button btnAdicionarMonte = view.findViewById(R.id.btnAdicionarMonte);
         btnAdicionarMonte.setOnClickListener(v -> {
             DoacoesFragment doacoesFragment = new DoacoesFragment();
@@ -76,6 +77,13 @@ public class HomeFragment extends Fragment {
                     .replace(R.id.fragment_container, doacoesFragment)
                     .addToBackStack(null)
                     .commit();
+        });
+
+        // Botão "Histórico"
+        Button btnHistory = view.findViewById(R.id.btnHistory);
+        btnHistory.setOnClickListener(v -> {
+            HistoricoDialogFragment dialog = new HistoricoDialogFragment();
+            dialog.show(getParentFragmentManager(), "HistoricoDialog");
         });
 
         return view;
